@@ -7,19 +7,30 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
         }
+        h1 {
+            margin-bottom: 20px;
+        }
         canvas {
             border: 1px solid black;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <h1>Interactive Pendulum Simulation</h1>
+    <button onclick="resetSimulation()">Reset Simulation</button>
     <script>
         let angle;
         let angleV;
@@ -34,9 +45,7 @@
             originX = width / 2;
             originY = 100;
             length = 300;
-            angle = PI / 4;
-            angleV = 0;
-            angleA = 0;
+            resetPendulum();
         }
 
         function draw() {
@@ -56,6 +65,17 @@
             line(originX, originY, bobX, bobY);
             ellipse(bobX, bobY, 48, 48);
         }
+
+        function resetPendulum() {
+            angle = PI / 4;
+            angleV = 0;
+            angleA = 0;
+        }
+
+        function resetSimulation() {
+            resetPendulum();
+        }
     </script>
 </body>
+<h1>Amongus</h1>
 </html>
