@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Pendulum Simulation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Pendulum Simulation</h1>
+    <script>
+        let angle;
+        let angleV;
+        let angleA;
+        let length;
+        let originX, originY;
+        let bobX, bobY;
+        let gravity = 0.4;
+
+        function setup() {
+            createCanvas(600, 600);
+            originX = width / 2;
+            originY = 100;
+            length = 300;
+            angle = PI / 4;
+            angleV = 0;
+            angleA = 0;
+        }
+
+        function draw() {
+            background(255);
+
+            angleA = (-1 * gravity / length) * sin(angle);
+            angleV += angleA;
+            angleV *= 0.99;  // damping
+            angle += angleV;
+
+            bobX = originX + length * sin(angle);
+            bobY = originY + length * cos(angle);
+
+            stroke(0);
+            strokeWeight(2);
+            fill(127);
+            line(originX, originY, bobX, bobY);
+            ellipse(bobX, bobY, 48, 48);
+        }
+    </script>
+</body>
+</html>
